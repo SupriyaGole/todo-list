@@ -3,6 +3,7 @@ import  './todo-creator.css';
 import {useDispatch} from "react-redux";
 import {actions} from '../reducer';
 import uuid from 'react-uuid';
+import {Add} from "@material-ui/icons";
 
 const {addTodo} = actions;
 const TodoCreator = () => {
@@ -15,13 +16,13 @@ const TodoCreator = () => {
       id: uuid(),
       description: todoText,
       status: 'ADDED',
-      createdAt: new Date(),
+      createdAt: new Date().toString(),
     }));
     setTodoText('');
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if(e.key === 'Enter') {
+    if(e.key === 'Enter' && !!todoText.length) {
       addTodoToList();
     }
   }
@@ -34,7 +35,9 @@ const TodoCreator = () => {
     <div className='todo-creator'>
       <input type="text" placeholder='add your todo task' id='todo-input'
              value={todoText} onKeyDown={handleKeyDown} onChange={handleChange} />
-      <button className='add-todo' onClick={addTodoToList} />
+      <button onClick={addTodoToList} disabled={!todoText.length}>
+        <Add />
+      </button>
     </div>
   );
 };

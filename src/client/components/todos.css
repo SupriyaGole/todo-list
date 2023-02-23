@@ -1,0 +1,12 @@
+button {
+    background: unset;
+    border: 1px solid grey;
+    border-radius: 2px;
+    padding-left: 0;
+    padding-right: 0;
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: unset;
+}

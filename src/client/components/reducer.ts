@@ -15,8 +15,9 @@ const todoList = createSlice({
     updateTodo(state, action) {
 
     },
-    deleteTodo(state, action) {
-
+    deleteTodo(state, {payload}) {
+      const todosExceptDeletedTodo = state.items.filter((item) => item.id !== payload);
+      state.items = todosExceptDeletedTodo;
     }
   }
 });

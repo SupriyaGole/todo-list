@@ -2,8 +2,8 @@ export interface TodoItem {
   id: number;
   description: string;
   status: "COMPLETED" | "ADDED" | "EDITED";
-  createdAt: Date;
-  updatedAt?: Date;
+  createdAt: string;
+  updatedAt?: string;
 }
 
 export interface TodoListState {
