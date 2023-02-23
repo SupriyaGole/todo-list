@@ -1,0 +1,42 @@
+.todo {
+    display: flex;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 400px;
+    background-color: white;
+    text-align: left;
+}
+
+.todo-detail {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.todo-actions {
+    margin-left: 10px;
+}
+
+.delete-todo,.edit-todo {
+    margin-right: 5px;
+    color: red;
+    border: unset;
+}
+
+.edit-todo {
+    color: unset;
+}
+
+.creation-date {
+    font-size: 12px;
+    color: grey;
+}
+
+#todo-edit-input {
+    border: none;
+    border-bottom: 1px solid;
+    outline: none;
+    font-size: 18px;
+}

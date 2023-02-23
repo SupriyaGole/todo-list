@@ -16,31 +16,3 @@
     flex-direction: column;
     gap: 10px;
 }
-
-.todo {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
-    width: 400px;
-    background-color: white;
-    text-align: left;
-}
-
-.todo-detail {
-    display: flex;
-    align-items: center;
-}
-
-.delete-todo {
-    margin-right: 5px;
-    color: red;
-    border: unset;
-}
-
-.creation-date {
-    font-size: 12px;
-    color: grey;
-    align-self: center;
-}

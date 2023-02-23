@@ -1,30 +1,83 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { DeleteOutlined } from "@material-ui/icons";
-import { useDispatch } from "react-redux";
+import "./todo.css";
 
-import { TodoItem } from "../../types/todos.types";
+import { DeleteOutlined, EditOutlined } from "@material-ui/icons";
+import { useDispatch, useSelector } from "react-redux";
+
+import { TodoItem, TodoListReducer } from "../../types/todos.types";
 import { actions } from "../reducer";
 
-const { deleteTodo } = actions;
+const { deleteTodo, editTodos } = actions;
 const Todo = ({ item }: { item: TodoItem }) => {
   const dispatch = useDispatch();
+
+  const { todos } = useSelector(({ todoList }: TodoListReducer) => ({
+    todos: todoList.items,
+  }));
+
+  const [todoText, setTodoText] = useState(item.description);
+  const [isEditEnabled, setIsEditEnabled] = useState(false);
 
   const deleteItem = () => {
     dispatch(deleteTodo(item.id));
   };
 
+  const editItem = () => {
+    const editedTodos = todos.map((todo) => {
+      if (todo.id === item.id) {
+        return {
+          ...todo,
+          description: todoText,
+          updatedAt: new Date().toString(),
+        };
+      }
+      return todo;
+    });
+    dispatch(editTodos(editedTodos));
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !!todoText.length) {
+      editItem();
+      setIsEditEnabled(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTodoText(e.target.value);
+  };
+
   return (
     <div className="todo">
       <div className="todo-detail">
+        {isEditEnabled ? (
+          <input
+            type="text"
+            placeholder="edit your todo task"
+            id="todo-edit-input"
+            value={todoText}
+            onKeyDown={handleKeyDown}
+            onChange={handleChange}
+          />
+        ) : (
+          <span>{item.description}</span>
+        )}
+        <span className="creation-date">
+          {new Date(item.createdAt).toLocaleDateString()}
+        </span>
+      </div>
+      <div className="todo-actions">
+        <button
+          className="edit-todo"
+          onClick={() => setIsEditEnabled(!isEditEnabled)}
+        >
+          <EditOutlined />
+        </button>
         <button className="delete-todo" onClick={deleteItem}>
           <DeleteOutlined />
         </button>
-        <span>{item.description}</span>
       </div>
-      <span className="creation-date">
-        {new Date(item.createdAt).toLocaleDateString()}
-      </span>
     </div>
   );
 };
