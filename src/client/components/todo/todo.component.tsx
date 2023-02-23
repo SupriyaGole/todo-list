@@ -14,10 +14,13 @@ const Todo = ({item}: {item: TodoItem}) => {
 
   return (
     <div className='todo'>
-      <button className='delete-todo' onClick={deleteItem}>
-        <DeleteOutlined />
-      </button>
-      <span>{item.description}</span>
+      <div className='todo-detail'>
+        <button className='delete-todo' onClick={deleteItem}>
+          <DeleteOutlined />
+        </button>
+        <span>{item.description}</span>
+      </div>
+      <span className='creation-date'>{new Date(item.createdAt).toLocaleDateString()}</span>
     </div>
   );
 };
