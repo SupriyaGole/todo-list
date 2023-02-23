@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Todos should render a component 1`] = `
+<DocumentFragment>
+  <div
+    class="todos"
+  >
+    <header>
+      <h1>
+        TODO - Daily Task Manager
+      </h1>
+    </header>
+    <div
+      class="main-page"
+    >
+      <div
+        class="todo-creator"
+      >
+        <input
+          id="todo-input"
+          placeholder="add your todo task"
+          type="text"
+          value=""
+        />
+        <button
+          data-testid="addTodo"
+          disabled=""
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

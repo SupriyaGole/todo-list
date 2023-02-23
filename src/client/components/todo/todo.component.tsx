@@ -5,7 +5,7 @@ import "./todo.css";
 import { DeleteOutlined, EditOutlined } from "@material-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 
-import { TodoItem, TodoListReducer } from "../../types/todos.types";
+import { TodoItem, TodoListReducer, TodoStatus } from "../../types/todos.types";
 import { actions } from "../reducer";
 
 const { deleteTodo, editTodos } = actions;
@@ -29,6 +29,7 @@ const Todo = ({ item }: { item: TodoItem }) => {
         return {
           ...todo,
           description: todoText,
+          status: TodoStatus.EDITED,
           updatedAt: new Date().toString(),
         };
       }
@@ -71,10 +72,15 @@ const Todo = ({ item }: { item: TodoItem }) => {
         <button
           className="edit-todo"
           onClick={() => setIsEditEnabled(!isEditEnabled)}
+          data-testid="editTodo"
         >
           <EditOutlined />
         </button>
-        <button className="delete-todo" onClick={deleteItem}>
+        <button
+          className="delete-todo"
+          onClick={deleteItem}
+          data-testid="deleteTodo"
+        >
           <DeleteOutlined />
         </button>
       </div>

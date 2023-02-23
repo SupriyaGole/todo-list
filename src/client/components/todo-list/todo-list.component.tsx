@@ -13,17 +13,17 @@ const TodoList = () => {
     todos: todoList.items,
   }));
 
+  const todoItems = todos.slice().reverse();
   return (
     <div className="main-page">
       <TodoCreator />
-      <div className="list-of-todos">
-        {todos
-          .slice()
-          .reverse()
-          .map((item) => (
+      {!!todoItems.length && (
+        <div className="list-of-todos">
+          {todoItems.map((item) => (
             <Todo item={item} key={item.id} />
           ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

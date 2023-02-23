@@ -6,6 +6,7 @@ import { Add } from "@material-ui/icons";
 import { useDispatch } from "react-redux";
 import uuid from "react-uuid";
 
+import { TodoStatus } from "../../types/todos.types";
 import { actions } from "../reducer";
 
 const { addTodo } = actions;
@@ -19,7 +20,7 @@ const TodoCreator = () => {
       addTodo({
         id: uuid(),
         description: todoText,
-        status: "ADDED",
+        status: TodoStatus.ADDED,
         createdAt: new Date().toString(),
       })
     );
@@ -46,7 +47,11 @@ const TodoCreator = () => {
         onKeyDown={handleKeyDown}
         onChange={handleChange}
       />
-      <button onClick={addTodoToList} disabled={!todoText.length}>
+      <button
+        onClick={addTodoToList}
+        disabled={!todoText.length}
+        data-testid="addTodo"
+      >
         <Add />
       </button>
     </div>

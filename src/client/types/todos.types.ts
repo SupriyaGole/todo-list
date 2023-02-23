@@ -1,7 +1,12 @@
+export enum TodoStatus {
+  "ADDED",
+  "EDITED",
+}
+
 export interface TodoItem {
-  id: number;
+  id: string;
   description: string;
-  status: "COMPLETED" | "ADDED" | "EDITED";
+  status: TodoStatus;
   createdAt: string;
   updatedAt?: string;
 }

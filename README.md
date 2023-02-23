@@ -1,6 +1,7 @@
 # Getting Started with TodoList App
 This is a basic app to make your daily task list.\
-App is written in modern frameworks which is in React+Typescript, redux toolkit.
+App is written in modern frameworks which is in React+Typescript, redux toolkit\
+and tested using react testing library.
 
 ![App UI](myimage.png)
 
