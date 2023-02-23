@@ -1,4 +1,5 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+
 import { TodoListState } from "../types/todos.types";
 
 const initialState = {
@@ -6,22 +7,18 @@ const initialState = {
 } as TodoListState;
 
 const todoList = createSlice({
-  name: 'todoList',
+  name: "todoList",
   initialState,
   reducers: {
-    addTodo(state, {payload}) {
-      state.items.push(payload)
+    addTodo(state, { payload }) {
+      state.items.push(payload);
     },
-    updateTodo(state, action) {
-
+    deleteTodo(state, { payload }) {
+      state.items = state.items.filter((item) => item.id !== payload);
     },
-    deleteTodo(state, {payload}) {
-      const todosExceptDeletedTodo = state.items.filter((item) => item.id !== payload);
-      state.items = todosExceptDeletedTodo;
-    }
-  }
+  },
 });
 
-export const {actions} = todoList;
+export const { actions } = todoList;
 
 export default todoList.reducer;

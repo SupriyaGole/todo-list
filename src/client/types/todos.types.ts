@@ -7,7 +7,7 @@ export interface TodoItem {
 }
 
 export interface TodoListState {
-  items: TodoItem[]
+  items: TodoItem[];
 }
 
 export interface TodoListReducer {
