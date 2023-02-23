@@ -1,13 +1,16 @@
 import React from "react";
 
+import { AnyAction, Store } from "@reduxjs/toolkit";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 
 import { TodoStatus } from "../../types/todos.types";
+import { actions } from "../reducer";
 import Todo from "./todo.component";
 
+const { deleteTodo, editTodos } = actions;
 describe("Todo", () => {
   const date = new Date(2023, 1, 15);
   const uuid1 = "123456789";
@@ -29,7 +32,8 @@ describe("Todo", () => {
       status: TodoStatus.ADDED,
     },
   ];
-  let store;
+
+  let store: Store<unknown, AnyAction>;
 
   const mockDate = new Date(2023, 1, 15);
   beforeEach(() => {
@@ -40,6 +44,7 @@ describe("Todo", () => {
         items: todos,
       },
     });
+    store.dispatch = jest.fn();
     render(
       <Provider store={store}>
         <Todo item={firstTodo} />
@@ -55,10 +60,7 @@ describe("Todo", () => {
     const deleteTodoBtn = screen.getByTestId("deleteTodo");
     userEvent.click(deleteTodoBtn);
 
-    expect(store.getActions()[0]).toEqual({
-      payload: "123456789",
-      type: "todoList/deleteTodo",
-    });
+    expect(store.dispatch).toHaveBeenCalledWith(deleteTodo("123456789"));
   });
 
   it("should edit a todo", () => {
@@ -69,9 +71,8 @@ describe("Todo", () => {
     fireEvent.change(editTodoInput, { target: { value: "" } });
     userEvent.type(editTodoInput, "Edited description");
     userEvent.keyboard("{enter}");
-
-    expect(store.getActions()[0]).toEqual({
-      payload: [
+    expect(store.dispatch).toHaveBeenCalledWith(
+      editTodos([
         {
           ...firstTodo,
           description: "Edited description",
@@ -79,8 +80,7 @@ describe("Todo", () => {
           updatedAt: mockDate.toString(),
         },
         todos[1],
-      ],
-      type: "todoList/editTodos",
-    });
+      ])
+    );
   });
 });
