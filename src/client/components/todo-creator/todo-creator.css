@@ -1,0 +1,20 @@
+.todo-creator {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+#todo-input {
+    width: 300px;
+    height: 30px;
+}
+
+.add-todo {
+    margin-left: 10px;
+    font-size: 22px;
+    align-self: center;
+}
+
+.add-todo::before {
+    content: '+';
+}

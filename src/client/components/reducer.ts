@@ -1,9 +1,11 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 interface TodoItem {
-  id: string;
+  id: number;
   description: string;
-  status: "COMPLETED" | "ADDED" | "EDITED"
+  status: "COMPLETED" | "ADDED" | "EDITED";
+  createdAt: Date;
+  updatedAt?: Date;
 }
 
 interface TodoListState {
@@ -18,8 +20,8 @@ const todoList = createSlice({
   name: 'todoList',
   initialState,
   reducers: {
-    addTodo(state, action) {
-
+    addTodo(state, {payload}) {
+      state.items.push(payload)
     },
     updateTodo(state, action) {
 
@@ -29,5 +31,7 @@ const todoList = createSlice({
     }
   }
 });
+
+export const {actions} = todoList;
 
 export default todoList.reducer;
