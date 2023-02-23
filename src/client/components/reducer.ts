@@ -1,16 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-
-interface TodoItem {
-  id: number;
-  description: string;
-  status: "COMPLETED" | "ADDED" | "EDITED";
-  createdAt: Date;
-  updatedAt?: Date;
-}
-
-interface TodoListState {
-  items: TodoItem[]
-}
+import { TodoListState } from "../types/todos.types";
 
 const initialState = {
   items: [],
