@@ -36,7 +36,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint '{src}/**/*.{js,ts,tsx}' --max-warnings 0",
-    "lint:fix": "eslint --fix 'src/**/*.{js,ts,tsx}'"
+    "lint:fix": "eslint --fix 'src/**/*.{js,ts,tsx}'",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -65,5 +67,6 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  }
+  },
+  "homepage": "https://supriyagole.github.io/todo-list/"
 }
