@@ -41,7 +41,7 @@ const TodoCreator = () => {
     <div className="todo-creator">
       <input
         type="text"
-        placeholder="add your todo task"
+        placeholder="add your first todo task"
         id="todo-input"
         value={todoText}
         onKeyDown={handleKeyDown}

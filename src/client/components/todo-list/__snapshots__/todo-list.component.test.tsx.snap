@@ -10,7 +10,7 @@ exports[`Todo List should render list of todos 1`] = `
     >
       <input
         id="todo-input"
-        placeholder="add your todo task"
+        placeholder="add your first todo task"
         type="text"
         value=""
       />

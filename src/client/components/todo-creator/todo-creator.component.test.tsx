@@ -34,7 +34,7 @@ describe("Todo Creator", () => {
   });
 
   it("should add todo in the redux store on enter keypress", () => {
-    const todoInput = screen.getByPlaceholderText("add your todo task");
+    const todoInput = screen.getByPlaceholderText("add your first todo task");
     userEvent.type(todoInput, "First task");
     userEvent.keyboard("{enter}");
 
@@ -50,7 +50,7 @@ describe("Todo Creator", () => {
   });
 
   it("should add todo in the redux store on click of add button", () => {
-    const todoInput = screen.getByPlaceholderText("add your todo task");
+    const todoInput = screen.getByPlaceholderText("add your first todo task");
     userEvent.type(todoInput, "First task");
 
     const addTodoBtn = screen.getByTestId("addTodo");
