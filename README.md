@@ -3,6 +3,9 @@ This is a basic app to make your daily task list.\
 App is written in modern frameworks which is in React+Typescript, redux toolkit\
 and tested using react testing library.
 
+You can access the app via https://supriyagole.github.io/todo-list/ link.
+
+Preview of the App
 ![App UI](myimage.png)
 
 ## Available Scripts
